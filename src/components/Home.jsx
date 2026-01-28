@@ -67,7 +67,7 @@ export default function HomePage() {
 
           {/* Title */}
           <h1 className="text-7xl md:text-6xl font-extrabold mb-4">
-            Welcome to our store!
+            Welcome to our storess!
           </h1>
 
           {/* Description */}
