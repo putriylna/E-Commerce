@@ -60,10 +60,9 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="bg-white pt-12">
-      <h2 className="inline-block relative text-2xl font-bold text-gray-900 left-0">
+    <div className="bg-white px-12 pt-12">
+      <h2 className="inline-block relative text-2xl font-bold text-gray-900 left-0 btn btn-primary">
         <span className="relative z-1 px-4 py-2">Products</span>
-        <span className="absolute inset-0 bg-yellow-400 rounded-r-full h-2.5 pt-10 w-42"></span>
       </h2>
       <div className="mx-auto max-w-7xl px-4 pb-16">
         <ProductList
