@@ -13,6 +13,8 @@ const createSlug = (title) => {
 };
 
 export default function ProductDetailPage() {
+  const [showAlert, setShowAlert] = useState(false);
+
   const { titleSlug } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -70,7 +72,14 @@ export default function ProductDetailPage() {
     };
 
     addToCart(productToAdd);
-    alert(`Added ${quantity} x ${product.title} to cart!`);
+
+    setShowAlert(true);
+
+    // auto hide alert
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+
   };
 
   if (loading) {
@@ -96,6 +105,17 @@ export default function ProductDetailPage() {
   }
 
   return (
+    <>
+    {showAlert && (
+      <div className="toast toast-top toast-end z-50">
+        <div className="alert alert-success">
+          <span>
+            Added {quantity} × {product.title} to cart
+          </span>
+        </div>
+      </div>
+    )}
+
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
@@ -105,7 +125,7 @@ export default function ProductDetailPage() {
           ← Back to Products
         </button>
 
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="bg-white rounded-xl overflow-hidden">
           <div className="md:flex">
             {/* Product Image */}
             <div className="md:w-1/2 p-8">
@@ -167,7 +187,7 @@ export default function ProductDetailPage() {
                 className="w-full flex items-center justify-center gap-2 py-3 px-6 
                           bg-yellow-400 text-white font-semibold rounded-lg
                           hover:bg-yellow-500 active:scale-95
-                          transition-all duration-200 shadow-md"
+                          transition-all duration-200 btn btn-primary"
               >
                 <FaPlus className="text-sm" />
                 <span>Add to Cart</span>
@@ -177,5 +197,6 @@ export default function ProductDetailPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

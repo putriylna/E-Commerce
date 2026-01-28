@@ -57,7 +57,6 @@ export default function Cart({ open, setOpen }) {
     
     // Di sini biasanya redirect ke checkout page
     alert(`Proceeding to checkout with ${totalItems} items totaling $${formatPrice(subtotal)}`)
-    // Contoh: window.location.href = '/checkout'
   }
 
   return (
@@ -150,7 +149,7 @@ export default function Cart({ open, setOpen }) {
                               <img
                                 src={product.image}
                                 alt={product.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full"
                               />
                             </div>
 

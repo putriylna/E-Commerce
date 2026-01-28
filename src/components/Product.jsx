@@ -42,8 +42,6 @@ export default function ProductsPage() {
   const openProductDetail = (product) => {
     const slug = createSlug(product.title);
     navigate(`/products/${slug}`, { state: { product } });
-    // Atau jika ingin fetch ulang berdasarkan title di halaman detail:
-    // navigate(`/products/${slug}?id=${product.id}`);
   };
 
   const handleAddToCart = (product, qty) => {

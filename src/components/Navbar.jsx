@@ -6,7 +6,7 @@ import { useCartStore } from "../store/useCartStore";
 export default function Navbar(){
     // Navbar.jsx
     const cartItems = useCartStore((state) => state.cartItems);
-    
+
     // Menghitung jumlah barang untuk badge
     const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
     const [open, setOpen] = useState(false)
@@ -16,11 +16,11 @@ export default function Navbar(){
     <div className="isolate flex items-center gap-x-6 overflow-hidden bg-black px-6 py-2.5 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10 sm:px-3.5 sm:before:flex-1 sticky top-0 z-10 ">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <p className="text-sm/6 text-gray-100">
-          <strong className="font-semibold">GeneriCon 2023</strong>
+          <strong className="font-semibold">Online Shop</strong>
           <svg viewBox="0 0 2 2" aria-hidden="true" className="mx-2 inline size-0.5 fill-current">
             <circle r={1} cx={1} cy={1} />
           </svg>
-          Join us in Denver from June 7 – 9 to see what’s coming next.
+          get free delivery on order overs 100$
         </p>
         <a
           href="#"
@@ -48,7 +48,7 @@ export default function Navbar(){
                 tabIndex="-1"
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-4 w-52 p-2 shadow">
                 <li><a>Homepage</a></li>
-                <li><a>Portfolio</a></li>
+                <li><a>Products</a></li>
                 <li><a>About</a></li>
             </ul>
             </div>
