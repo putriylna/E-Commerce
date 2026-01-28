@@ -159,7 +159,7 @@ export default function Navbar({ onSearch }) {
                     
                     {/* Logo */}
                     <span className='flex items-center gap-3 font-extrabold text-xl ml-2'>
-                        <Link to="/" className='heading-logo leading-none hidden sm:inline hover:opacity-80 transition-opacity'>ONLINE SHOP</Link>
+                        <Link to="/" className='heading-logo leading-none hidden sm:inline hover:opacity-80 transition-opacity'>ONLINE <br/> SHOP</Link>
                         <Link to="/" className='heading-logo leading-none sm:hidden hover:opacity-80 transition-opacity'>OS</Link>
                     </span>
                     
@@ -197,31 +197,6 @@ export default function Navbar({ onSearch }) {
                 </div>
 
                 {/* Desktop Search - Hidden on mobile */}
-                <div className="navbar-end hidden md:flex">
-                    <form onSubmit={handleSearch} className="form-control max-w-md">
-                        <div className="relative w-64">
-                        <input
-                            type="search"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                            placeholder="Search products..."
-                            className="input input-bordered w-full pl-10 pr-10 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"
-                        />
-                        <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-                        {searchQuery && (
-                            <button
-                            type="button"
-                            onClick={handleClearSearch}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 hover:bg-gray-100 p-1 rounded"
-                            >
-                            <XMarkIcon className="h-4 w-4 text-gray-400 hover:text-gray-600" />
-                            </button>
-                        )}
-                        </div>
-                    </form>
-                </div>
-
 
 
                 {/* Mobile Search Overlay */}
@@ -293,6 +268,32 @@ export default function Navbar({ onSearch }) {
                         </svg>
                     </button>
 
+                    <div className="navbar-end hidden md:flex">
+                    <form onSubmit={handleSearch} className="form-control max-w-md">
+                        <div className="relative w-64">
+                        <input
+                            type="search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                            placeholder="Search products..."
+                            className="input input-bordered w-full pl-10 pr-10 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"
+                        />
+                        <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                        {searchQuery && (
+                            <button
+                            type="button"
+                            onClick={handleClearSearch}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 hover:bg-gray-100 p-1 rounded"
+                            >
+                            <XMarkIcon className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                            </button>
+                        )}
+                        </div>
+                    </form>
+                </div>
+
+
                     {/* Cart */}
                     <div className="relative group">
                         <button 
@@ -311,7 +312,7 @@ export default function Navbar({ onSearch }) {
                         </button>
                         
                         {/* Cart Preview Dropdown (Desktop Only) */}
-                        <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border">
+                        <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-300">
                             <div className="p-4">
                                 <div className="flex justify-between items-center mb-2">
                                     <h3 className="font-semibold">Shopping Cart</h3>
@@ -321,7 +322,7 @@ export default function Navbar({ onSearch }) {
                                     <>
                                         <div className="max-h-60 overflow-y-auto">
                                             {cartItems.slice(0, 3).map((item) => (
-                                                <div key={item.id} className="flex items-center py-2 border-b">
+                                                <div key={item.id} className="flex items-center py-2 border-b border-gray-300">
                                                     <img src={item.image} alt={item.title} className="h-10 w-10 object-cover rounded" />
                                                     <div className="ml-3 flex-1">
                                                         <p className="text-sm truncate">{item.title}</p>
@@ -334,8 +335,7 @@ export default function Navbar({ onSearch }) {
                                         </div>
                                         <button
                                             onClick={() => setOpen(true)}
-                                            className="w-full mt-3 btn btn-primary btn-sm"
-                                        >
+                                            className="w-full mt-3 btn btn-primary btn-sm">
                                             View Full Cart
                                         </button>
                                     </>
@@ -356,13 +356,13 @@ export default function Navbar({ onSearch }) {
                         </button>
                         
                         {/* Account Dropdown (Desktop Only) */}
-                        <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border">
+                        <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-300">
                             <div className="py-2">
                                 <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</Link>
                                 <Link to="/register" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Register</Link>
                                 <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</Link>
                                 <Link to="/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Orders</Link>
-                                <div className="border-t mt-2 pt-2">
+                                <div className="border-t border-gray-300 mt-2 pt-2">
                                     <button className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</button>
                                 </div>
                             </div>
