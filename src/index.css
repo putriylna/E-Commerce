@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap');
+
+@plugin "daisyui" {
+  themes: light --default, bumblebee, dark;
+}
+
+.heading-logo {
+  font-family: "DynaPuff", system-ui;
+}
+
+.text-bubble-yellow {
+  color: #ffffff; /* teks hitam */
+  text-shadow:
+    -3px -3px 0 #facc15,
+     3px -3px 0 #facc15,
+    -3px  3px 0 #facc15,
+     3px  3px 0 #facc15,
+     0px -3px 0 #facc15,
+     0px  3px 0 #facc15,
+    -3px  0px 0 #facc15,
+     3px  0px 0 #facc15;
+}
