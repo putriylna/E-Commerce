@@ -1,12 +1,12 @@
-import { useRef } from 'react'
+import { useRef } from "react";
 import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
   DialogTitle,
-} from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { useCartStore } from "../store/useCartStore"
+} from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useCartStore } from "../store/useCartStore";
 
 export default function Cart({ open, setOpen }) {
   const {
@@ -17,47 +17,49 @@ export default function Cart({ open, setOpen }) {
     clearCart,
     getSubtotal,
     getTotalItems,
-    parsePrice
-  } = useCartStore()
+    parsePrice,
+  } = useCartStore();
 
-  const closeButtonRef = useRef(null)
-  const subtotal = getSubtotal()
-  const totalItems = getTotalItems()
+  const closeButtonRef = useRef(null);
+  const subtotal = getSubtotal();
+  const totalItems = getTotalItems();
 
   // Format angka dengan 2 desimal
   const formatPrice = (price) => {
-    const num = typeof price === 'number' ? price : parsePrice(price)
-    return num.toLocaleString('en-US', {
+    const num = typeof price === "number" ? price : parsePrice(price);
+    return num.toLocaleString("en-US", {
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    })
-  }
+      maximumFractionDigits: 2,
+    });
+  };
 
   // Handle decrement dengan konfirmasi jika qty = 1
   const handleDecrement = (id) => {
-    const product = cartItems.find(item => item.id === id)
-    if (!product) return
+    const product = cartItems.find((item) => item.id === id);
+    if (!product) return;
 
     if (product.qty === 1) {
-      if (window.confirm('Remove this item from cart?')) {
-        removeFromCart(id)
+      if (window.confirm("Remove this item from cart?")) {
+        removeFromCart(id);
       }
     } else {
-      decrementQty(id)
+      decrementQty(id);
     }
-  }
+  };
 
   // Handle checkout
   const handleCheckout = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (cartItems.length === 0) {
-      alert('Your cart is empty!')
-      return
+      alert("Your cart is empty!");
+      return;
     }
-    
+
     // Di sini biasanya redirect ke checkout page
-    alert(`Proceeding to checkout with ${totalItems} items totaling $${formatPrice(subtotal)}`)
-  }
+    alert(
+      `Proceeding to checkout with ${totalItems} items totaling $${formatPrice(subtotal)}`,
+    );
+  };
 
   return (
     <Dialog
@@ -66,16 +68,21 @@ export default function Cart({ open, setOpen }) {
       initialFocus={closeButtonRef}
       className="relative z-50"
     >
-      {/* Overlay */}
-      <DialogBackdrop className="fixed inset-0 bg-black/30" />
+      {/* Overlay dengan animasi */}
+      <DialogBackdrop
+        transition
+        className="fixed inset-0 bg-black/30 transition-opacity duration-500 ease-in-out data-closed:opacity-0"
+      />
 
       {/* Side Panel */}
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <DialogPanel className="pointer-events-auto w-screen max-w-md transform transition duration-300 ease-in-out data-closed:translate-x-full">
+            <DialogPanel
+              transition
+              className="pointer-events-auto w-screen max-w-md transform transition duration-500 ease-in-out data-closed:translate-x-full sm:duration-700"
+            >
               <div className="flex h-full flex-col bg-white shadow-xl">
-                
                 {/* Header */}
                 <div className="flex items-center justify-between px-4 py-4 sm:px-6 bg-gray-50 border-b border-gray-300">
                   <div>
@@ -84,17 +91,18 @@ export default function Cart({ open, setOpen }) {
                     </DialogTitle>
                     {cartItems.length > 0 && (
                       <p className="text-sm text-gray-600 mt-1">
-                        {totalItems} {totalItems === 1 ? 'item' : 'items'} in cart
+                        {totalItems} {totalItems === 1 ? "item" : "items"} in
+                        cart
                       </p>
                     )}
                   </div>
-                  
+
                   <div className="flex items-center gap-3">
                     {cartItems.length > 0 && (
                       <button
                         onClick={() => {
-                          if (window.confirm('Clear all items from cart?')) {
-                            clearCart()
+                          if (window.confirm("Clear all items from cart?")) {
+                            clearCart();
                           }
                         }}
                         className="text-sm text-red-600 hover:text-red-800 hover:underline"
@@ -102,7 +110,7 @@ export default function Cart({ open, setOpen }) {
                         Clear All
                       </button>
                     )}
-                    
+
                     <button
                       ref={closeButtonRef}
                       onClick={() => setOpen(false)}
@@ -119,8 +127,18 @@ export default function Cart({ open, setOpen }) {
                   {cartItems.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-12 text-center">
                       <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        <svg
+                          className="w-8 h-8 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                          />
                         </svg>
                       </div>
                       <h3 className="text-lg font-medium text-gray-900 mb-2">
@@ -139,11 +157,14 @@ export default function Cart({ open, setOpen }) {
                   ) : (
                     <div className="space-y-4">
                       {cartItems.map((product) => {
-                        const itemPrice = parsePrice(product.price)
-                        const itemTotal = itemPrice * product.qty
-                        
+                        const itemPrice = parsePrice(product.price);
+                        const itemTotal = itemPrice * product.qty;
+
                         return (
-                          <div key={product.id} className="flex py-4 border-b border-gray-300 last:border-b-0">
+                          <div
+                            key={product.id}
+                            className="flex py-4 border-b border-gray-300 last:border-b-0"
+                          >
                             {/* Product Image */}
                             <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
                               <img
@@ -182,11 +203,11 @@ export default function Cart({ open, setOpen }) {
                                   >
                                     <span className="text-gray-600">−</span>
                                   </button>
-                                  
+
                                   <span className="font-medium text-gray-900 min-w-8 text-center">
                                     {product.qty}
                                   </span>
-                                  
+
                                   <button
                                     onClick={() => incrementQty(product.id)}
                                     className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
@@ -202,8 +223,12 @@ export default function Cart({ open, setOpen }) {
                                   </p>
                                   <button
                                     onClick={() => {
-                                      if (window.confirm('Remove this item from cart?')) {
-                                        removeFromCart(product.id)
+                                      if (
+                                        window.confirm(
+                                          "Remove this item from cart?",
+                                        )
+                                      ) {
+                                        removeFromCart(product.id);
                                       }
                                     }}
                                     className="text-xs font-medium text-red-600 hover:text-red-800 hover:underline transition-colors mt-1"
@@ -214,7 +239,7 @@ export default function Cart({ open, setOpen }) {
                               </div>
                             </div>
                           </div>
-                        )
+                        );
                       })}
                     </div>
                   )}
@@ -229,7 +254,7 @@ export default function Cart({ open, setOpen }) {
                         <p>Subtotal</p>
                         <p>${formatPrice(subtotal)}</p>
                       </div>
-                      
+
                       <div className="flex justify-between text-sm text-gray-600">
                         <p>Items</p>
                         <p>{totalItems}</p>
@@ -270,5 +295,5 @@ export default function Cart({ open, setOpen }) {
         </div>
       </div>
     </Dialog>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
-import Product from './components/Product';
-import ProductDetailPage from './products/ProductDetail'; // Tambahkan halaman detail
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./components/Home";
+import About from "./components/About";
+import Product from "./components/Product";
+import ProductDetailPage from "./products/ProductDetail"; // Tambahkan halaman detail
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -15,8 +15,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/products/:titleSlug" element={<ProductDetailPage />} />
-            <Route path="/products" element={<Product />} /> 
+            <Route
+              path="/products/:titleSlug"
+              element={<ProductDetailPage />}
+            />
+            <Route path="/products" element={<Product />} />
           </Routes>
         </main>
         <Footer />

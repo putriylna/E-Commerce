@@ -1,5 +1,5 @@
-export default function App (){
-    return (
+export default function App() {
+  return (
     <footer className="footer sm:footer-horizontal bg-black text-neutral-content p-10">
       <nav>
         <h6 className="footer-title">Services</h6>
@@ -22,6 +22,5 @@ export default function App (){
         <a className="link link-hover">Cookie policy</a>
       </nav>
     </footer>
-
-    );  
+  );
 }
