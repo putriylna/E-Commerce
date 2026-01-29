@@ -1,9 +1,10 @@
 import Product from "./Product";
+import About from "./About";
 // build homepage online shop
 export default function HomePage() {
   return (
     <>
-      <div className="relative bg-base-00 py-18 flex flex-col justify-between">
+      <div className="relative bg-base-200 py-18 flex flex-col justify-between">
         {/* HERO CONTENT */}
         <div className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="max-w-2xl text-center">
@@ -26,7 +27,7 @@ export default function HomePage() {
                           d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
                         />
                       </svg>
-                      Home
+                      Home page
                     </a>
                   </li>
                   <li>
@@ -44,7 +45,7 @@ export default function HomePage() {
                           d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
                         />
                       </svg>
-                      Documents
+                      products
                     </a>
                   </li>
                   <li>
@@ -62,7 +63,7 @@ export default function HomePage() {
                           d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                         />
                       </svg>
-                      Add Document
+                     About
                     </span>
                   </li>
                 </ul>
@@ -70,8 +71,8 @@ export default function HomePage() {
             </div>
 
             {/* Title */}
-            <h1 className="text-7xl md:text-6xl font-extrabold mb-4">
-              Welcome to our storess!
+            <h1 className="heading-logo text-7xl md:text-6xl font-extrabold mb-4">
+              Welcome to our stores!
             </h1>
 
             {/* Description */}
@@ -87,6 +88,7 @@ export default function HomePage() {
         </div>
       </div>
       <Product />
+      <About />
     </>
   );
 }

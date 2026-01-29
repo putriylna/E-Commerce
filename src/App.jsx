@@ -3,7 +3,7 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Product from "./components/Product";
-import ProductDetailPage from "./products/ProductDetail"; // Tambahkan halaman detail
+import ProductDetailPage from "./products/ProductDetail";
 import Footer from "./components/Footer";
 
 export default function App() {
