@@ -8,15 +8,15 @@ import ProductList from "../products/ProductList";
 const createSlug = (title) => {
   return title
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // Hapus karakter khusus
-    .replace(/\s+/g, '-')     // Ganti spasi dengan dash
-    .replace(/-+/g, '-');     // Hapus dash berlebih
+    .replace(/[^\w\s-]/g, "") // Hapus karakter khusus
+    .replace(/\s+/g, "-") // Ganti spasi dengan dash
+    .replace(/-+/g, "-"); // Hapus dash berlebih
 };
 
 export default function ProductsPage() {
   const navigate = useNavigate();
   const addToCart = useCartStore((state) => state.addToCart);
-  
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -52,7 +52,7 @@ export default function ProductsPage() {
       qty: qty,
       image: product.image || "",
       category: product.category || "",
-      description: product.description || ""
+      description: product.description || "",
     };
 
     addToCart(productToAdd);
@@ -61,9 +61,13 @@ export default function ProductsPage() {
 
   return (
     <div className="bg-white px-12 pt-12">
-      <h2 className="inline-block relative text-2xl font-bold text-gray-900 left-0 btn btn-primary">
-        <span className="relative z-1 px-4 py-2">Products</span>
+      <h2 className="relative inline-block mb-8">
+        <span className="absolute inset-0 bg-yellow-400 -skew-y-2 rounded-lg shadow-lg shadow-yellow-400/50"></span>
+        <span className="relative heading-logo px-8 py-4 text-2xl md:text-3xl font-extrabold text-gray-900">
+          Products
+        </span>
       </h2>
+
       <div className="mx-auto max-w-7xl px-4 pb-16">
         <ProductList
           products={products}

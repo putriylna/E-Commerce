@@ -4,7 +4,7 @@ import About from "./About";
 export default function HomePage() {
   return (
     <>
-      <div className="relative bg-base-200 py-18 flex flex-col justify-between">
+      <div className="relative bg-base-200 py-12 flex flex-col justify-between">
         {/* HERO CONTENT */}
         <div className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="max-w-2xl text-center">
