@@ -63,7 +63,7 @@ export default function HomePage() {
                           d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                         />
                       </svg>
-                     About
+                      About
                     </span>
                   </li>
                 </ul>
@@ -71,8 +71,12 @@ export default function HomePage() {
             </div>
 
             {/* Title */}
-            <h1 className="heading-logo text-7xl md:text-6xl font-extrabold mb-4">
-              Welcome to our stores!
+            <h1 className="heading-logo text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+              <span className="relative inline-block">
+                <span className="absolute inset-0 bg-yellow-400 -skew-y-3 rounded-lg"></span>
+                <span className="relative px-3 text-gray-900">Welcome</span>
+              </span>{" "}
+              to our stores!
             </h1>
 
             {/* Description */}
